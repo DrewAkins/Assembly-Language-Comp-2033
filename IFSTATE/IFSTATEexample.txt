@@ -1,0 +1,22 @@
+TITLE if example, changes the number to 100 if the number inserted from the keyboard is greater than 100.
+
+include irvine32.inc
+.data
+prompt byte "Enter an integer :",0
+
+.code
+
+main PROC
+mov edx, OFFSET prompt
+Call WriteString
+Call ReadInt
+
+cmp eax, 100
+JG out1  ; Jumps to label out1 if eax is greater than 100
+jmp zz
+
+out1:mov eax, 100 
+	 Call WriteInt
+zz: exit
+main ENDP
+end main
